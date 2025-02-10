@@ -2,7 +2,8 @@ package main
 
 import (
 	"os"
-	"share-golang/logging"
+
+	"github.com/xpo-nential/share-golang/logging"
 )
 
 func init() {
