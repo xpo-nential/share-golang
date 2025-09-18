@@ -60,10 +60,12 @@ func GetAuthInfo(secretKey, stringToken string, fn func(claims jwt.MapClaims) (A
 
 	if claims, ok := parsedToken.Claims.(jwt.MapClaims); ok {
 
-		result, err := fn(claims)
+		resp, err := fn(claims)
 		if err != nil {
 			return result, err
 		}
+
+		result = resp
 
 	} else {
 		return result, fmt.Errorf("invalid token")
