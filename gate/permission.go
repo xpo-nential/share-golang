@@ -54,6 +54,10 @@ func GetAuthInfo(secretKey, stringToken string, fn func(claims jwt.MapClaims) (A
 		return result, err
 	}
 
+	if !parsedToken.Valid {
+		return result, fmt.Errorf("invalid or expired token")
+	}
+
 	if claims, ok := parsedToken.Claims.(jwt.MapClaims); ok {
 
 		result, err := fn(claims)
